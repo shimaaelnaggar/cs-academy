@@ -1,11 +1,12 @@
+import 'package:cs_academy/core/routing/routes.dart';
+import 'package:cs_academy/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-    
-      // case '/home':
-      //   return MaterialPageRoute(builder: (_) => HomeScreen());
+      case Routes.splash:
+        return MaterialPageRoute(builder: (_) => SplashView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
