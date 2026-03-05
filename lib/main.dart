@@ -1,8 +1,11 @@
 import 'package:cs_academy/core/routing/app_router.dart';
 import 'package:cs_academy/core/routing/routes.dart';
+import 'package:cs_academy/core/services/supabase_services.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SupabaseServices.initSupabase();
   runApp(const MyApp());
 }
 
