@@ -1,17 +1,21 @@
+import 'package:cs_academy/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTextStyles {
   static final TextStyle heading = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.bold,
+    color: Color(AppColors.appNameColor),
   );
   static final TextStyle semiheading = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
+    color: Color(AppColors.primaryColor),
   );
-  static final TextStyle body = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.normal,
+  static final TextStyle s14w600 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: Color(AppColors.bodyTextColor),
   );
 
   static final TextStyle regular = TextStyle(

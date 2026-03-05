@@ -1,6 +1,7 @@
 import 'package:cs_academy/core/constants/app_colors.dart';
 import 'package:cs_academy/core/constants/app_images.dart';
 import 'package:cs_academy/core/constants/app_strings.dart';
+import 'package:cs_academy/core/routing/routes.dart';
 import 'package:cs_academy/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,11 @@ class _SplashViewState extends State<SplashView>
     );
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
     _controller.forward();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, Routes.login);
+    });
   }
 
   @override
@@ -61,6 +67,7 @@ class _SplashViewState extends State<SplashView>
                 Text(
                   AppStrings.appTagline,
                   style: AppTextStyles.regular.copyWith(
+                    fontSize: 18,
                     color: Color(AppColors.primaryColor),
                   ),
                   textAlign: TextAlign.center,
