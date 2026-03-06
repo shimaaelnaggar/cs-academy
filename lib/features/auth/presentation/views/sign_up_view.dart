@@ -161,6 +161,7 @@ class _SignUpViewState extends State<SignUpView> {
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
                                         context.read<AuthCubit>().signUp(
+                                          name: fullNameController.text.trim(),
                                           email: emailController.text.trim(),
                                           password: passwordController.text
                                               .trim(),

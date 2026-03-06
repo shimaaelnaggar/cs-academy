@@ -21,12 +21,36 @@ class AuthRepo {
   Future<Either<String, void>> signUp({
     required String email,
     required String password,
+    required String name,
   }) async {
     try {
       await supabase.auth.signUp(email: email, password: password);
+      await saveUserData(name: name, email: email);
       return const Right(null);
     } on AuthException catch (e) {
       return Left(e.message);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  Future<Either<String, void>> saveUserData({
+    required String name,
+    required String email,
+  }) async {
+    try {
+      final user = supabase.auth.currentUser;
+      if (user != null) {
+        final userId = user.id;
+        await supabase.from('users').insert({
+          'id': userId,
+          'name': name,
+          'email': user.email,
+        });
+      }
+      return const Right(null);
+    } on Exception catch (e) {
+      return Left(e.toString());
     } catch (e) {
       return Left(e.toString());
     }

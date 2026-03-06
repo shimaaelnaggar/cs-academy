@@ -25,9 +25,10 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signUp({
     required String email,
     required String password,
+    required String name,
   }) async {
     emit(SignUpLoadingState());
-    final result = await authRepo.signUp(email: email, password: password);
+    final result = await authRepo.signUp(email: email, password: password, name: name );
     result.fold(
       (error) => emit(SignUpErrorState(error)),
       (_) => emit(SignUpSuccessState()),
