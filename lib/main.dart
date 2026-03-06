@@ -1,6 +1,7 @@
 import 'package:cs_academy/core/routing/app_router.dart';
 import 'package:cs_academy/core/routing/routes.dart';
 import 'package:cs_academy/core/services/supabase_services.dart';
+import 'package:cs_academy/features/layout/presentation/views/layout_bottom_nav_bar_view.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -19,8 +20,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'CS Academy',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      initialRoute: Routes.splash,
-      onGenerateRoute: AppRouter().onGenerateRoute,
+      // initialRoute: Routes.splash,
+      home: const LayoutBottomNavBarView(),
+      // onGenerateRoute: AppRouter().onGenerateRoute,
     );
   }
 }
