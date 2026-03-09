@@ -1,4 +1,5 @@
 import 'package:cs_academy/core/constants/app_colors.dart';
+import 'package:cs_academy/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,8 +16,13 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
+  final TextStyle? hintStyle;
+  final Color? cursorColor;
+  final Color? inputColor;
+  final bool filledColor;
 
   const CustomTextFormField({
+    super.key,
     this.suffixIcon,
     this.controller,
     this.validator,
@@ -29,7 +35,10 @@ class CustomTextFormField extends StatelessWidget {
     this.label,
     required this.hint,
     this.obscureText = false,
-    super.key,
+    this.hintStyle,
+    this.cursorColor,
+    this.inputColor,
+    this.filledColor = false,
   });
 
   @override
@@ -50,18 +59,23 @@ class CustomTextFormField extends StatelessWidget {
             keyboardType: keyboardType,
             textInputAction: textInputAction,
             autocorrect: true,
-            cursorColor: Color(AppColors.secondaryColor),
-            style: const TextStyle(
-              color: Color(AppColors.secondaryColor),
+            cursorColor: cursorColor ?? Color(AppColors.secondaryColor),
+            style: TextStyle(
+              color: inputColor ?? Color(AppColors.secondaryColor),
               fontSize: 16,
             ),
             decoration: InputDecoration(
+              filled: filledColor,
+              fillColor: Color(0xffF9FAFB),
               suffixIcon: suffixIcon,
               prefixIcon: prefixIcon,
               hintText: hint,
-              hintStyle: TextStyle(color: Color(0xff6B7280), fontSize: 16),
+              hintStyle: hintStyle ?? AppTextStyles.hintStyle,
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(AppColors.secondaryColor), width: 2),
+                borderSide: BorderSide(
+                  color: Color(AppColors.secondaryColor),
+                  width: 2,
+                ),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),

@@ -22,4 +22,16 @@ class AppTextStyles {
     fontSize: 18,
     fontWeight: FontWeight.normal,
   );
+
+  static final TextStyle hintStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+    color: Color(0xff6B7280),
+  );
+
+  static final TextStyle s14bold = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: Color(0xff1F2937),
+  );
 }

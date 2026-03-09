@@ -19,9 +19,11 @@ class CustomButton extends StatelessWidget {
           foregroundColor: AppColors.icnosColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
-        child: Text(
-          text,
-          style: AppTextStyles.semiheading.copyWith(fontSize: 18),
+        child: Center(
+          child: Text(
+            text,
+            style: AppTextStyles.semiheading.copyWith(fontSize: 18),
+          ),
         ),
       ),
     );

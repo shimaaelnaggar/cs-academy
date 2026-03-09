@@ -12,4 +12,5 @@ class AppColors {
   static const warningColor = 0xFFFFC107;
   static final icnosColor = const Color(0xff3B71D8).withValues(alpha: 0.6);
   static final dividerColor = const Color(0xffE5E7EB);
+  static final lightBlueColor = const Color(0xffF3F4F6);
 }
