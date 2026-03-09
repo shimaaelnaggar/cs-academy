@@ -8,9 +8,11 @@ class AppColors {
   static const headlineTextColor = 0xFFFFD656;
   static const bodyTextColor = 0xFF334155;
   static const errorColor = 0xFFB00020;
-  static const successColor = 0xFF4CAF50;
+  static const successColor = 0xFF22C55E;
   static const warningColor = 0xFFFFC107;
   static final icnosColor = const Color(0xff3B71D8).withValues(alpha: 0.6);
   static final dividerColor = const Color(0xffE5E7EB);
   static final lightBlueColor = const Color(0xffF3F4F6);
+  static final darkBlueColor = const Color(0xff1E293B);
+  static final darkGray = const Color(0xff475569);
 }

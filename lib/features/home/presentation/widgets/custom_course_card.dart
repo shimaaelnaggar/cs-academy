@@ -1,4 +1,5 @@
 import 'package:cs_academy/core/constants/app_colors.dart';
+import 'package:cs_academy/core/routing/routes.dart';
 import 'package:cs_academy/core/theme/text_styles.dart';
 import 'package:cs_academy/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +11,14 @@ class CustomCouseCard extends StatelessWidget {
     required this.imag,
     required this.price,
     required this.title,
+    required this.arguments,
   });
 
   final String title;
   final String imag;
   final String desc;
   final num price;
+  final Object? arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,9 @@ class CustomCouseCard extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               height: 40,
-              child: CustomButton(onPressed: () {}, text: "Details"),
+              child: CustomButton(onPressed: () {
+                Navigator.pushNamed(context,Routes.courseDetails,arguments: arguments);
+              }, text: "Details"),
             ),
           ],
         ),

@@ -168,10 +168,7 @@ class _LoginViewState extends State<LoginView> {
                                               .trim(),
                                         );
                                       }
-                                      Navigator.pushNamed(
-                                        context,
-                                        Routes.signUp,
-                                      );
+                                      Navigator.pushNamed(context, Routes.home);
                                     },
                                     text: AppStrings.login,
                                   ),
@@ -182,7 +179,7 @@ class _LoginViewState extends State<LoginView> {
                               text: "Don't have an account?",
                               buttonText: 'Sign Up',
                               onPressed: () {
-                                Navigator.pushNamed(context, Routes.signUp);
+                                Navigator.pop(context);
                               },
                             ),
                           ],

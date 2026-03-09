@@ -71,6 +71,7 @@ class Home extends StatelessWidget {
                                     imag: course.img,
                                     desc: course.desc,
                                     price: course.price,
+                                    arguments: course,
                                   );
                                 },
                               ),

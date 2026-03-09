@@ -181,7 +181,7 @@ class _SignUpViewState extends State<SignUpView> {
                               text: "Already have an account?",
                               buttonText: 'Login',
                               onPressed: () {
-                                Navigator.pop(context);
+                                Navigator.pushNamed(context, Routes.login);
                               },
                             ),
                           ],
