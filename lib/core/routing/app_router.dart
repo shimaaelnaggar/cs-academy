@@ -4,7 +4,9 @@ import 'package:cs_academy/features/auth/presentation/views/sign_up_view.dart';
 import 'package:cs_academy/features/course_details/presentation/views/course_details.dart';
 import 'package:cs_academy/features/home/data/models/course_model.dart';
 import 'package:cs_academy/features/home/presentation/views/home.dart';
+import 'package:cs_academy/features/layout/presentation/views/layout_bottom_nav_bar_view.dart';
 import 'package:cs_academy/features/splash/presentation/views/splash_view.dart';
+import 'package:cs_academy/features/subscribed_courses/presentation/views/subscribed_courses.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -21,6 +23,10 @@ class AppRouter {
       case Routes.courseDetails:
         final course = settings.arguments as CourseModel;
         return MaterialPageRoute(builder: (_) => CourseDetails(course: course));
+      case Routes.subscribedCourses:
+        return MaterialPageRoute(builder: (_) => SubscribedCourses());
+        case Routes.layout:
+        return MaterialPageRoute(builder: (_) => LayoutBottomNavBarView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

@@ -59,6 +59,7 @@ class _LoginViewState extends State<LoginView> {
               context: context,
               color: Color(AppColors.successColor),
             );
+             Navigator.pushReplacementNamed(context, Routes.layout);
           }
         },
         builder: (context, state) {
@@ -156,7 +157,7 @@ class _LoginViewState extends State<LoginView> {
                             state is LoginLoadingState
                                 ? Center(
                                     child: CircularProgressIndicator(
-                                      color: Color(AppColors.primaryColor),
+                                      color: Color(AppColors.secondaryColor),
                                     ),
                                   )
                                 : CustomButton(
@@ -168,7 +169,7 @@ class _LoginViewState extends State<LoginView> {
                                               .trim(),
                                         );
                                       }
-                                      Navigator.pushNamed(context, Routes.home);
+                                     
                                     },
                                     text: AppStrings.login,
                                   ),

@@ -17,6 +17,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: Color(AppColors.bodyTextColor),
   );
+  static final TextStyle s18bold = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.navyBlue,
+  );
 
   static final TextStyle regular = TextStyle(
     fontSize: 18,

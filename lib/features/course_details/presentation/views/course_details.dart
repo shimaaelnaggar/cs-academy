@@ -56,85 +56,87 @@ class CourseDetails extends StatelessWidget {
                 style: AppTextStyles.semiheading.copyWith(fontSize: 20),
               ),
             ),
-            body: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.network(
-                      course.img,
-                      width: double.infinity,
-                      height: MediaQuery.sizeOf(context).height * 0.35,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Center(child: Icon(Icons.broken_image));
-                      },
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        course.img,
+                        width: double.infinity,
+                        height: MediaQuery.sizeOf(context).height * 0.35,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Center(child: Icon(Icons.broken_image));
+                        },
+                      ),
                     ),
-                  ),
-
-                  const SizedBox(height: 20),
-                  Text(
-                    course.title,
-                    style: AppTextStyles.semiheading.copyWith(
-                      color: AppColors.darkBlueColor,
+              
+                    const SizedBox(height: 20),
+                    Text(
+                      course.title,
+                      style: AppTextStyles.semiheading.copyWith(
+                        color: AppColors.darkBlueColor,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "${course.price.toString()} USD",
-                    style: AppTextStyles.semiheading.copyWith(
-                      color: Color(AppColors.successColor),
+                    const SizedBox(height: 8),
+                    Text(
+                      "${course.price.toString()} USD",
+                      style: AppTextStyles.semiheading.copyWith(
+                        color: Color(AppColors.successColor),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    "Description",
-                    style: AppTextStyles.semiheading.copyWith(
-                      color: AppColors.darkBlueColor,
-                      fontSize: 18,
+                    const SizedBox(height: 16),
+                    Text(
+                      "Description",
+                      style: AppTextStyles.semiheading.copyWith(
+                        color: AppColors.darkBlueColor,
+                        fontSize: 18,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    course.desc,
-                    style: AppTextStyles.hintStyle.copyWith(
-                      color: AppColors.darkGray,
+                    const SizedBox(height: 8),
+                    Text(
+                      course.desc,
+                      style: AppTextStyles.hintStyle.copyWith(
+                        color: AppColors.darkGray,
+                      ),
                     ),
-                  ),
-                  Spacer(),
-                  state is CourseDetailsLoading || state is CourseDetailsInitial
-                      ? Center(
-                          child: CircularProgressIndicator(
-                            color: Color(AppColors.secondaryColor),
+                    Spacer(),
+                    state is CourseDetailsLoading || state is CourseDetailsInitial
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: Color(AppColors.secondaryColor),
+                            ),
+                          )
+                        : CustomButton(
+                            onPressed: () {
+                              if (state is CourseDetailsInitial ||
+                                  state is CourseDetailsError ||
+                                  state is NotEnrolled) {
+                                context
+                                    .read<CourseDetailsCubit>()
+                                    .enrollmentsCourse(
+                                      courseId: course.id,
+                                      userId: Supabase
+                                          .instance
+                                          .client
+                                          .auth
+                                          .currentUser!
+                                          .id,
+                                    );
+                              }
+                            },
+                            text:
+                                state is CourseDetailsLoaded ||
+                                    state is AlreadyEnrolled
+                                ? "Enrolled"
+                                : "Enroll Course",
                           ),
-                        )
-                      : CustomButton(
-                          onPressed: () {
-                            if (state is CourseDetailsInitial ||
-                                state is CourseDetailsError ||
-                                state is NotEnrolled) {
-                              context
-                                  .read<CourseDetailsCubit>()
-                                  .enrollmentsCourse(
-                                    courseId: course.id,
-                                    userId: Supabase
-                                        .instance
-                                        .client
-                                        .auth
-                                        .currentUser!
-                                        .id,
-                                  );
-                            }
-                          },
-                          text:
-                              state is CourseDetailsLoaded ||
-                                  state is AlreadyEnrolled
-                              ? "Enrolled"
-                              : "Enroll Course",
-                        ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
