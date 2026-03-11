@@ -52,7 +52,7 @@ class SubscribedCourses extends StatelessWidget {
                             itemCount: state.courses.length,
                             itemBuilder: (BuildContext context, int index) {
                               return Padding(
-                                padding: const EdgeInsets.all(16),
+                                padding: const EdgeInsets.only(top: 16,left: 16,right:16 ),
                                 child: Card(
                                   elevation: 3,
                                   color: Color(AppColors.primaryColor),
@@ -88,7 +88,6 @@ class SubscribedCourses extends StatelessWidget {
 
                                         const SizedBox(width: 12),
 
-                                        /// COURSE INFO
                                         Expanded(
                                           child: Column(
                                             crossAxisAlignment:
@@ -111,12 +110,13 @@ class SubscribedCourses extends StatelessWidget {
                                                   onPressed: () {
                                                     Navigator.pushNamed(
                                                       context,
-                                                      Routes.courseDetails,
-                                                      arguments:
-                                                          state.courses[index],
+                                                      Routes.videos,
+                                                      arguments: state
+                                                          .courses[index]
+                                                          .id,
                                                     );
                                                   },
-                                                  text: "Continue Course",
+                                                  text: "Complete Course",
                                                 ),
                                               ),
                                             ],

@@ -39,6 +39,8 @@ dependencies:
   dartz: ^0.10.1
   supabase_flutter: ^2.12.0
   meta: ^1.17.0
+  video_player: ^2.11.1
+  flick_video_player: ^0.9.0
   
   
 
