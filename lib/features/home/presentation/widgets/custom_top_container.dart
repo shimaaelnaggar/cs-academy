@@ -5,8 +5,8 @@ import 'package:cs_academy/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class CustomTopContainer extends StatelessWidget {
-  const CustomTopContainer({super.key});
-
+  const CustomTopContainer({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,14 +21,11 @@ class CustomTopContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             SizedBox(height: 16),
-            Text(
-              'data',
-              style: AppTextStyles.semiheading.copyWith(fontSize: 18),
-            ),
+            SizedBox(height: 16),
+            Text(text, style: AppTextStyles.semiheading.copyWith(fontSize: 18)),
             SizedBox(height: 6),
             Text(
-              AppStrings.appGreeting ,
+              AppStrings.appGreeting,
               style: AppTextStyles.semiheading.copyWith(fontSize: 20),
             ),
             CustomTextFormField(

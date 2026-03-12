@@ -5,6 +5,7 @@ import 'package:cs_academy/features/course_details/presentation/views/course_det
 import 'package:cs_academy/features/home/data/models/course_model.dart';
 import 'package:cs_academy/features/home/presentation/views/home.dart';
 import 'package:cs_academy/features/layout/presentation/views/layout_bottom_nav_bar_view.dart';
+import 'package:cs_academy/features/profile/presentation/views/edit_profile.dart';
 import 'package:cs_academy/features/splash/presentation/views/splash_view.dart';
 import 'package:cs_academy/features/subscribed_courses/presentation/views/subscribed_courses.dart';
 import 'package:cs_academy/features/videos/data/models/video_model.dart';
@@ -50,6 +51,8 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => VideoPlayerView(videoModel: videoModel),
         );
+        case Routes.editProfile:
+        return MaterialPageRoute(builder: (_) => EditProfile());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

@@ -34,4 +34,14 @@ class AuthCubit extends Cubit<AuthState> {
       (_) => emit(SignUpSuccessState()),
     );
   }
+void getUser() async {
+  emit(LoginLoadingState());
+
+  final res = await authRepo.getUserData();
+
+  res.fold(
+    (error) => emit(LoginErrorState(error)),
+    (data) => emit(LoginSuccessState()),
+  );
+}
 }

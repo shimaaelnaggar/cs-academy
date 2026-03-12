@@ -14,13 +14,13 @@ class HomeCubit extends Cubit<HomeState> {
 
     try {
       final res = await homeRepo.getCourses();
-
+      final user = await homeRepo.getUserData();
       res.fold(
         (error) {
           emit(HomeError(errorMessage: error));
         },
         (courses) {
-          emit(HomeLoaded(courses: courses));
+          emit(HomeLoaded(courses: courses,user: user));
         },
       );
     } catch (e) {

@@ -18,8 +18,8 @@ class AppTextStyles {
     color: Color(AppColors.bodyTextColor),
   );
   static final TextStyle s18bold = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w600,
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
     color: AppColors.navyBlue,
   );
 
@@ -38,5 +38,23 @@ class AppTextStyles {
     fontSize: 14,
     fontWeight: FontWeight.bold,
     color: Color(0xff1F2937),
+  );
+
+   static final TextStyle s14regular = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: Color(0xff64748B),
+  );
+
+   static final TextStyle s12Bold = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: Color(0xff64748B),
+  );
+
+   static final TextStyle s16Meduim = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: Color(0xff0F172A),
   );
 }

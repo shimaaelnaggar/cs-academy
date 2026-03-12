@@ -9,8 +9,9 @@ final class HomeLoading extends HomeState {}
 
 final class HomeLoaded extends HomeState {
   final List<CourseModel> courses;
+  final Map<String, dynamic> user;
 
-  HomeLoaded({required this.courses});
+  HomeLoaded({required this.courses, required this.user});
 }
 
 final class HomeError extends HomeState {

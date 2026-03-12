@@ -8,6 +8,7 @@ import 'package:cs_academy/features/home/presentation/widgets/custom_top_contain
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -29,58 +30,63 @@ class Home extends StatelessWidget {
           return Scaffold(
             backgroundColor: AppColors.lightBlueColor,
             body: SafeArea(
-              child: Column(
-                children: [
-                  CustomTopContainer(),
-                  SizedBox(height: 16),
+  child: Column(
+    children: [
 
-                  if (state is HomeLoading)
-                    Center(
-                      child: CircularProgressIndicator(
-                        color: Color(AppColors.secondaryColor),
-                      ),
-                    ),
+      if (state is HomeLoading)
+        Center(
+          child: CircularProgressIndicator(
+            color: Color(AppColors.secondaryColor),
+          ),
+        ),
 
-                  if (state is HomeLoaded)
-                    state.courses.isEmpty
-                        ? Center(
-                            child: Text(
-                              'Not Found Yet',
-                              style: AppTextStyles.s14w600,
-                            ),
-                          )
-                        : Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 3,
-                              ),
-                              child: GridView.builder(
-                                itemCount: state.courses.length,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      mainAxisSpacing: 1,
-                                      crossAxisSpacing: 3,
-                                      childAspectRatio: 4 / 5,
-                                    ),
-                                itemBuilder: (BuildContext context, index) {
-                                  final course = state.courses[index];
-                                  return CustomCouseCard(
-                                    title: course.title,
-                                    imag: course.img,
-                                    desc: course.desc,
-                                    price: course.price,
-                                    arguments: course,
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                ],
-              ),
+      if (state is HomeLoaded) ...[
+        CustomTopContainer(
+          text: "Hello, ${state.user['name']} ",
+        ),
+
+        const SizedBox(height: 16),
+
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 3,
             ),
-          );
+            child: state.courses.isEmpty
+                ? Center(
+                    child: Text(
+                      'Not Found Yet',
+                      style: AppTextStyles.s14w600,
+                    ),
+                  )
+                : GridView.builder(
+                    itemCount: state.courses.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 1,
+                      crossAxisSpacing: 3,
+                      childAspectRatio: 4 / 5,
+                    ),
+                    itemBuilder: (context, index) {
+                      final course = state.courses[index];
+
+                      return CustomCouseCard(
+                        title: course.title,
+                        imag: course.img,
+                        desc: course.desc,
+                        price: course.price,
+                        arguments: course,
+                      );
+                    },
+                  ),
+          ),
+        ),
+      ]
+    ],
+  ),
+), );
         },
       ),
     );

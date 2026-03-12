@@ -55,4 +55,20 @@ class AuthRepo {
       return Left(e.toString());
     }
   }
+
+  Future<Either<String, Map<String, dynamic>>> getUserData() async {
+  try {
+    final user = supabase.auth.currentUser;
+
+    final data = await supabase
+        .from('users')
+        .select()
+        .eq('id', user!.id)
+        .single();
+
+    return Right(data);
+  } catch (e) {
+    return Left(e.toString());
+  }
+}
 }

@@ -59,7 +59,7 @@ class _LoginViewState extends State<LoginView> {
               context: context,
               color: Color(AppColors.successColor),
             );
-             Navigator.pushReplacementNamed(context, Routes.layout);
+            Navigator.pushReplacementNamed(context, Routes.layout);
           }
         },
         builder: (context, state) {
@@ -138,7 +138,10 @@ class _LoginViewState extends State<LoginView> {
                                         });
                                       },
                                     ),
-
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: AppColors.icnosColor,
+                              ),
                               textInputAction: TextInputAction.done,
                             ),
                             SizedBox(height: 20),
@@ -169,7 +172,6 @@ class _LoginViewState extends State<LoginView> {
                                               .trim(),
                                         );
                                       }
-                                     
                                     },
                                     text: AppStrings.login,
                                   ),

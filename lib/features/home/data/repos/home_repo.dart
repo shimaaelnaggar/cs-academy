@@ -7,10 +7,8 @@ class HomeRepo {
 
   Future<Either<String, List<CourseModel>>> getCourses() async {
     try {
-      final res = await Supabase.instance.client
-          .from('courses')
-          .select();
-          // print(res);
+      final res = await Supabase.instance.client.from('courses').select();
+      // print(res);
 
       courses = [];
 
@@ -22,5 +20,17 @@ class HomeRepo {
     } catch (e) {
       return left(e.toString());
     }
+  }
+
+  Future<Map<String, dynamic>> getUserData() async {
+    final user = Supabase.instance.client.auth.currentUser;
+
+    final data = await Supabase.instance.client
+        .from('users')
+        .select()
+        .eq('id', user!.id)
+        .single();
+
+    return data;
   }
 }
